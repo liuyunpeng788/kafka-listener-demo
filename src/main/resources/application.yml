@@ -1,0 +1,28 @@
+spring:
+  kafka:
+    admin:
+      client-id: dev
+    bootstrap-servers: 172.16.17.112:9092,172.16.17.113:9092,172.16.17.114:9092
+    consumer:
+      max-poll-records: 1000
+      group-id: max_test_group
+      enable-auto-commit: false
+      auto-offset-reset: latest
+      fetch-min-size: 1
+      fetch-max-wait: 5000
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+    listener:
+      no-poll-threshold: 0.4
+      poll-timeout: 3000
+      ack-mode: manual_immediate
+
+    producer:
+      batch-size: 10
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+    template:
+      default-topic: max_test
+
